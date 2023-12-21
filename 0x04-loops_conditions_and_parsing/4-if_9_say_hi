@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script displays "Best School" 10 times, with a special message on the 9th iteration
+
+itr=1
+while [ $itr -le 10 ]; do
+    if [ $itr -eq 9 ]; then
+        echo "Best School"
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+
+    ((itr++))
+done
