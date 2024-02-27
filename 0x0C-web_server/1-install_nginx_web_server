@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Installs nginx server
 # Serve a page that would return a Hello World string
-apt-get update
-apt-get -y install nginx
+sudo apt-get  update -y
+sudo apt-get install nginx -y
 ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.html
 sudo service nginx start
