@@ -1,3 +1,4 @@
+#!/bin/bash
 global
     log     /dev/log local0
     maxconn 2048
@@ -32,7 +33,7 @@ frontend www-https
 
 backend www-backend
     balance  roundrobin
-    redirect scheme https if !{ ssl_fc }
+    redirect scheme https if '!{ ssl_fc }'
 	server 502062-web-01 34.207.57.38:80 check
 	server 502062-web-02 52.86.242.247:80 check
 
