@@ -1,3 +1,4 @@
+#!/bin/bash
 global
         log /dev/log    local0
         log /dev/log    local1 notice
@@ -34,10 +35,10 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 
 frontend  ollyjhay-frontend
-        bind *:80
+        bind -- *:80
         mode http
-        bind *:443 ssl crt /etc/haproxy/certs/www.ollyjhay.tech.pem
-        redirect scheme https if !{ ssl_fc }
+        bind -- *:443 ssl crt /etc/haproxy/certs/www.ollyjhay.tech.pem
+        redirect scheme https if '!{ ssl_fc }'
         default_backend ollyjhay-backend
 backend ollyjhay-backend
         balance roundrobin
@@ -45,7 +46,7 @@ backend ollyjhay-backend
 	    server 502062-web-02 52.86.242.247:80 check
 
 listen http-in
-        bind :80
+        bind -- :80
         balance roundrobin
 	    server 502062-web-01 34.207.57.38:80 check
 	    server 502062-web-02 52.86.242.247:80 check
